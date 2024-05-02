@@ -6,7 +6,8 @@
     top: 10px;
     left: 10px;
     z-index: 100;
-    text-shadow: 0 0 5px white;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
 }
 
 .score-view span {
