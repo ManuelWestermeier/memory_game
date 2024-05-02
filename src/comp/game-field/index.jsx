@@ -1,27 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GameFieldRow from "./game-field-row";
 import "./index.css";
 import GameScore from "./game-score";
 
 function GameField({ gameData, setGameData, names }) {
-  const [score, setScore] = useState([0, 0]);
   const [isFirstPlayer, setIsFirstPlayer] = useState(Math.random() > 0.5);
+  const [score, setScore] = useState([0, 0]);
 
-  function addPair(choord1, choord2) {
-    const card1 = gameData[choord1.x][choord1.y];
-    const card2 = gameData[choord2.x][choord2.y];
+  const [selected, setSelected] = useState([false, false]);
+  const [isFirstSelected, setIsFirstSelected] = useState(true);
 
-    if (card1.uncovered || card2.uncovered) return;
-    if (card1.src != card2.src) return;
+  //check if there is a match
+  useEffect(() => {
+    if (!selected[1]) return;
+    if (selected[0].src != selected[1].src) return;
+    //add to the active players score 1
+    if (isFirstPlayer) {
+      setScore((old) => [old[0] + 1, old[1]]);
+    } else {
+      setScore((old) => [old[0], old[1] + 1]);
+    }
+    //hide the selected cards
+    setGameData((old) => {
+      old[selected[0].choords.x][selected[0].choords.y].uncovered = true;
+      old[selected[1].choords.x][selected[1].choords.y].uncovered = true;
+      return old;
+    });
+  }, [selected]);
 
-    
-  }
+  const passed = {
+    selected,
+    setSelected,
+    isFirstSelected,
+    setIsFirstSelected,
+    setIsFirstPlayer,
+  };
 
   return (
     <>
       <div className="flex-col">
         {Object.keys(gameData).map((x) => (
-          <GameFieldRow gameRowData={gameData[x]} key={x} />
+          <GameFieldRow passed={passed} gameRowData={gameData[x]} key={x} />
         ))}
       </div>
       <GameScore score={score} names={names} isFirstPlayer={isFirstPlayer} />

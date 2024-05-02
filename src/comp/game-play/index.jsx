@@ -17,7 +17,7 @@ function GamePlay({ setAppState, names, fieldSize }) {
 
   return (
     <div className="game-port">
-      <GameField gameData={gameData} names={names} />
+      <GameField setGameData={setGameData} gameData={gameData} names={names} />
     </div>
   );
 }
