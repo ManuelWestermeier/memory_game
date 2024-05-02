@@ -3,7 +3,7 @@ import GameFieldRow from "./game-field-row";
 import "./index.css";
 import GameScore from "./game-score";
 
-function GameField({ gameData, setGameData, names }) {
+function GameField({ gameData, setGameData, names, setAppState, fieldSize }) {
   const [isFirstPlayer, setIsFirstPlayer] = useState(Math.random() > 0.5);
   const [score, setScore] = useState([0, 0]);
 
@@ -27,6 +27,18 @@ function GameField({ gameData, setGameData, names }) {
       return old;
     });
   }, [selected]);
+
+  //check if someone wone
+  useEffect(() => {
+    if (score[0] + score[1] == fieldSize ** 2) {
+      if (score[0] > score[1]) {
+        window.winner = names[0];
+      } else {
+        window.winner = names[1];
+      }
+      setAppState(2);
+    }
+  }, [score]);
 
   const passed = {
     selected,

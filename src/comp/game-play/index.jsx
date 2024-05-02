@@ -8,16 +8,28 @@ function GamePlay({ setAppState, names, fieldSize }) {
   const [loadingStateInPercent, setAppStateLoadingStateInPercent] = useState(0);
 
   useEffect(() => {
-    GetRandomGameData(fieldSize, setAppStateLoadingStateInPercent).then((gd) => setGameData(gd));
+    GetRandomGameData(fieldSize, setAppStateLoadingStateInPercent).then((gd) =>
+      setGameData(gd)
+    );
   }, []);
 
   if (!gameData) {
-    return <h1 className="loading">Loading... ({loadingStateInPercent}%) (it can take a 30s)</h1>;
+    return (
+      <h1 className="loading">
+        Loading... ({loadingStateInPercent}%) (it can take a 30s)
+      </h1>
+    );
   }
 
   return (
     <div className="game-port">
-      <GameField setGameData={setGameData} gameData={gameData} names={names} />
+      <GameField
+        fieldSize={fieldSize}
+        setAppState={setAppState}
+        setGameData={setGameData}
+        gameData={gameData}
+        names={names}
+      />
     </div>
   );
 }
