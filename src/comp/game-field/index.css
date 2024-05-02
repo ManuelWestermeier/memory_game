@@ -1,0 +1,19 @@
+.game-field {
+    max-width: 100vmin;
+    max-height: 100vmin;
+    margin: auto;
+}
+
+.flex-col {
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    flex-direction: row;
+}

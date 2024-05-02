@@ -1,0 +1,29 @@
+.game-port {
+    width: 100%;
+    height: 100dvh;
+}
+
+.game-port .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.game-port .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.loading {
+    animation: 1s loading-anim ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes loading-anim {
+    50% {
+        transform: translateY(10px);
+    }
+}

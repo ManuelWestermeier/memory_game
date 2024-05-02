@@ -1,0 +1,20 @@
+.score-view {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+    text-shadow: 0 0 5px white;
+}
+
+.score-view span {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.score-view .active {
+    box-shadow: 0 0 10px -2px dodgerblue;
+    background-color: dodgerblue;
+}
