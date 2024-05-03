@@ -30,7 +30,7 @@ function GameField({ gameData, setGameData, names, setAppState, fieldSize }) {
 
   //check if someone wone
   useEffect(() => {
-    if (score[0] + score[1] == fieldSize ** 2) {
+    if ((score[0] + score[1]) * 2 == fieldSize ** 2) {
       if (score[0] > score[1]) {
         window.winner = names[0];
       } else {
