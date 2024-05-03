@@ -17,6 +17,14 @@ function GameFieldCard({
       selected?.[1]?.coords?.y == data.coords.y);
 
   const onClick = () => {
+    //break if the first selected is this card
+    if (
+      selected?.[0]?.coords?.x == data.coords.x &&
+      selected?.[0]?.coords?.y == data.coords.y
+    ) {
+      return
+    }
+    //toggle card
     if (isFirstSelected) {
       setSelected(() => [data, false]);
       setIsFirstSelected(false);
