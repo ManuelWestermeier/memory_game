@@ -30,14 +30,14 @@ function GameField({ gameData, setGameData, names, setAppState, fieldSize }) {
 
   //check if someone wone
   useEffect(() => {
-    if ((score[0] + score[1]) * 2 == fieldSize ** 2) {
-      if (score[0] > score[1]) {
-        window.winner = names[0];
-      } else {
-        window.winner = names[1];
-      }
-      setAppState(2);
+    if ((score[0] + score[1]) * 2 != fieldSize ** 2)
+      return
+    if (score[0] > score[1]) {
+      window.winner = `${names[0]} (${score[0]} vs ${score[1]})`;
+    } else {
+      window.winner = `${names[1]} (${score[0]} vs ${score[1]})`;
     }
+    setAppState(2);
   }, [score]);
 
   const passed = {
