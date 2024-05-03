@@ -23,13 +23,26 @@ async function getRandomImageURLs(_size, setAppStateLoadingStateInPercent) {
   }
 
   var state = 0;
+  var usedImages = {}
 
   for (let index = 0; index < size; index++) {
     fetchPromises.push(
       (async () => {
-        var res = await fetch(
-          `https://picsum.photos/${imageSize}/${imageSize}`
-        );
+        async function get() {
+          var res = await fetch(
+            `https://picsum.photos/${imageSize}/${imageSize}`
+          );
+
+          if (usedImages[res.url]) {
+            return await get()
+          }
+
+          usedImages[res.url] = true
+
+          return res
+        }
+
+        var res = await get()
 
         setAppStateLoadingStateInPercent(Math.floor((state / size) * 100));
 
