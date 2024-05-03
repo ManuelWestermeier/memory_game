@@ -18,12 +18,14 @@ function GameFieldCard({
 
   const onClick = () => {
     if (isFirstSelected) {
-      setIsFirstPlayer((o) => !o);
       setSelected(() => [data, false]);
       setIsFirstSelected(false);
     } else {
       setSelected((old) => [old[0], data]);
       setIsFirstSelected(true);
+      //on win retry
+      if (selected[0].src == data.src) return;
+      setIsFirstPlayer((o) => !o);
     }
   };
 
