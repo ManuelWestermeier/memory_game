@@ -12,7 +12,7 @@ function GameField({ gameData, setGameData, names, setAppState, fieldSize }) {
 
   //check if there is a match
   useEffect(() => {
-    if (!selected[1]) return;
+    if (!selected[1] || !selected[0]) return;
     if (selected[0].src != selected[1].src) return;
     //add to the active players score 1
     if (isFirstPlayer) {
@@ -22,8 +22,8 @@ function GameField({ gameData, setGameData, names, setAppState, fieldSize }) {
     }
     //hide the selected cards
     setGameData((old) => {
-      old[selected[0].choords.x][selected[0].choords.y].uncovered = true;
-      old[selected[1].choords.x][selected[1].choords.y].uncovered = true;
+      old[selected?.[0]?.coords?.x][selected?.[0]?.coords?.y].uncovered = true;
+      old[selected?.[1]?.coords?.x][selected?.[1]?.coords?.y].uncovered = true;
       return old;
     });
   }, [selected]);

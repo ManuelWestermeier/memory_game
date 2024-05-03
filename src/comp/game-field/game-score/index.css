@@ -8,6 +8,7 @@
     z-index: 100;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 5px;
+    pointer-events: none;
 }
 
 .score-view span {

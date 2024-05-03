@@ -10,10 +10,6 @@ function GameFieldCard({
     setIsFirstPlayer,
   },
 }) {
-  if (data.uncovered) {
-    return <div className={`card card-hide`} />;
-  }
-
   const isTurned =
     (selected?.[0]?.coords?.x == data.coords.x &&
       selected?.[0]?.coords?.y == data.coords.y) ||
@@ -32,7 +28,7 @@ function GameFieldCard({
   };
 
   return (
-    <div className={`card ${isTurned && "card-turned"}`} onClick={onClick}>
+    <div className={`card ${isTurned && "card-turned"} ${data.uncovered && "card-hide"}`} onClick={onClick}>
       <img src={data.src} alt={`card ${data.src}`} />
     </div>
   );

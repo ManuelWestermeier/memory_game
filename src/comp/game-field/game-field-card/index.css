@@ -23,5 +23,15 @@
 }
 
 .card-hide {
-    transform: scale(0);
+    animation: 1s hide-card-anim forwards;
+}
+
+@keyframes hide-card-anim {
+    50% {
+        transform: scale(2);
+    }
+
+    100% {
+        transform: scale(0) rotate(360deg);
+    }
 }
