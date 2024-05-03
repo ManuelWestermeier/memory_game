@@ -1,5 +1,17 @@
 async function getRandomImageURLs(_size, setAppStateLoadingStateInPercent) {
   const size = (_size * _size) / 2;
+
+  if (!navigator.onLine) {
+    return JSON.parse(
+      localStorage.getItem("memory-offline-data")
+    ).slice(0, size)
+  } else if (!localStorage.getItem("memory-offline-data")) {
+    setTimeout(async () => {
+      var data = await ((await fetch("/memory_game/offline-data.json")).json())
+      localStorage.setItem("memory-offline-data", JSON.stringify(data))
+    }, 8000)
+  }
+
   const fetchPromises = [];
 
   var imageSize = 100;
@@ -77,8 +89,8 @@ function fillGrid(randomImages, oldGridData, size) {
     return oldGridData;
   }
 
-  while (!setRandomImageData(oldGridData, image, size)) {}
-  while (!setRandomImageData(oldGridData, image, size)) {}
+  while (!setRandomImageData(oldGridData, image, size)) { }
+  while (!setRandomImageData(oldGridData, image, size)) { }
 
   return fillGrid(randomImages.slice(1), oldGridData, size);
 }
