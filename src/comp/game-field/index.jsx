@@ -32,10 +32,12 @@ function GameField({ gameData, setGameData, names, setAppState, fieldSize }) {
   useEffect(() => {
     if ((score[0] + score[1]) * 2 != fieldSize ** 2)
       return
-    if (score[0] > score[1]) {
-      window.winner = `${names[0]} (${score[0]} vs ${score[1]})`;
+    if (score[0] == score[1]) {
+      window.winner = `draw (${score[0]} vs ${score[1]})`;
+    } else if (score[0] > score[1]) {
+      window.winner = `${names[0]} (${score[0]} vs ${score[1]}) won`;
     } else {
-      window.winner = `${names[1]} (${score[0]} vs ${score[1]})`;
+      window.winner = `${names[1]} (${score[1]} vs ${score[0]}) won`;
     }
     setAppState(2);
   }, [score]);

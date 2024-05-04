@@ -5,7 +5,7 @@ function FinishMenu({ setAppState }) {
     <div className="flex-col finish-menu">
       <h1 className="flex-row">
         <span>🏆</span>
-        <span>{window?.winner} won</span>
+        <span>{window?.winner}</span>
         <span>🏆</span>
       </h1>
       <div className="flex-row">
