@@ -19,7 +19,7 @@ function AskForName({ setAppState, setNames, names, fieldSize, setFieldSize }) {
       }}
       className="fullscreen-form"
     >
-      <h1>Memory Game</h1>
+      <h1>Best Memory Game Free</h1>
       <input
         type="text"
         required
