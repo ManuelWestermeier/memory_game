@@ -7,7 +7,7 @@ import FinishMenu from "./comp/finish-menu";
 function App() {
   const [appState, setAppState] = useState(0);
   const [names, setNames] = useLocalStorage("memory-names", ["", ""]);
-  const [fieldSize, setFieldSize] = useLocalStorage("memory-field-size", 8);
+  const [fieldSize, setFieldSize] = useLocalStorage("memory-field-size", 6);
 
   if (appState == 0) {
     return (
