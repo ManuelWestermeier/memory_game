@@ -41,14 +41,6 @@ export default function AskForName({
 
   return (
     <div className="ask-container">
-      <Helmet>
-        <title>Best Memory Game Free | Challenge a Friend</title>
-        <meta
-          name="description"
-          content="Play the best free 1v1 memory game online. Customize your grid and challenge a friend now!"
-        />
-      </Helmet>
-
       <section className="intro-section">
         <h1>Welcome to the Best Free Memory Game</h1>
         <p className="intro-text">
