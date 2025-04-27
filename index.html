@@ -21,5 +21,9 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if (document.location.origin.includes("github"))
+        window.location = "https://my-memory.duckdns.org/";
+    </script>
   </body>
 </html>
